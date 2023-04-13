@@ -2,21 +2,30 @@
   {
     "name": "Hana Lee",
     "title": "Magebike Courier",
-    "publisher": "Saga Press"
+    "publisher": "Saga Press",
+    "season": "Spring",
+    "ageCategory": "Adult",
+    "genre": ["Action/Adventure", "Fantasy"]
   },
   {
     "name": "Meredith Mooring",
     "title": "Redsight",
-    "publisher": "Solaris"
+    "publisher": "Solaris",
+    "ageCategory": "Adult",
+    "genre": "Science Fiction"
   },
   {
     "name": "Keshe Chow",
     "title": "The Girl With No Reflection",
-    "publisher": "Delacorte Press"
+    "publisher": "Delacorte Press",
+    "ageCategory": ["YA", "Adult"],
+    "genre": "Fantasy"
   },
   {
     "name": "Clare Edge",
     "title": "Accidental Demons",
-    "publisher": "Inkyard Press"
+    "publisher": "Inkyard Press",
+    "ageCategory": "MG",
+    "genre": "Fantasy"
   }
 ]

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthorService } from '../services/author.service';
+import { Author } from '../types';
 
 @Component({
   selector: 'app-authors',
@@ -9,7 +10,7 @@ import { AuthorService } from '../services/author.service';
   styleUrls: ['./authors.component.scss'],
 })
 export class AuthorsComponent {
-  authors$: Observable<any[]>;
+  authors$: Observable<Author[]>;
   authorName?: string;
   bookTitle?: string;
   searchConfig?: any = {
@@ -19,5 +20,6 @@ export class AuthorsComponent {
 
   constructor(private authorService: AuthorService) {
     this.authors$ = authorService.getAuthorsForDisplay();
+    this.authors$.subscribe(result => console.log(result));
   }
 }

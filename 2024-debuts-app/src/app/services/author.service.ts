@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import authors from '../authors.json';
+import { Author } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,8 @@ import authors from '../authors.json';
 export class AuthorService {
   constructor() {}
 
-  getAuthorsForDisplay(): Observable<any[]> {
+  getAuthorsForDisplay(): Observable<Author[]> {
     // TODO (thequeenofspades): replace with DB call
-    return of(authors);
+    return of(JSON.parse(JSON.stringify(authors)));
   }
 }

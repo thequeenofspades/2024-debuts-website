@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Author } from '../types';
 
 @Pipe({
   name: 'filter',
@@ -6,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
   transform(
-    authors: { name: string; title: string }[] | null,
+    authors: Author[] | null,
     searchConfig?: { authorName: string; bookTitle: string }
   ): any[] | null {
     if (authors && searchConfig) {
