@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "debuts-website": {
+      "hosting": {
+        "2024-debuts-app": [
+          "2024-debuts"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "debuts-website"
+  }
+}
