@@ -7,6 +7,11 @@
   width: 100%;
 }
 
+.search-fields {
+  display: flex;
+  gap: 12px;
+}
+
 .author-cards-container {
   align-items: center;
   display: flex;

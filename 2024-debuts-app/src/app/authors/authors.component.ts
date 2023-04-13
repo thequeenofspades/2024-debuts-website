@@ -11,6 +11,11 @@ import { AuthorService } from '../services/author.service';
 export class AuthorsComponent {
   authors$: Observable<any[]>;
   authorName?: string;
+  bookTitle?: string;
+  searchConfig?: any = {
+    authorName: '',
+    bookTitle: '',
+  };
 
   constructor(private authorService: AuthorService) {
     this.authors$ = authorService.getAuthorsForDisplay();

@@ -1,10 +1,15 @@
 <div class="authors-container">
-  <mat-form-field>
-    <input matInput placeholder="Search by author name" [(ngModel)]="authorName">
-  </mat-form-field>
+  <div class="search-fields">
+    <mat-form-field>
+      <input matInput placeholder="Search by author name" [(ngModel)]="searchConfig.authorName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Search by book title" [(ngModel)]="searchConfig.bookTitle">
+    </mat-form-field>
+  </div>
 
   <div class="author-cards-container">
-    <mat-card class="author-card" *ngFor="let author of ((authors$ | async) | filter: authorName)">
+    <mat-card class="author-card" *ngFor="let author of ((authors$ | async) | filter: searchConfig)">
       <mat-card-header>
         <mat-card-title>{{ author.name }}</mat-card-title>
         <mat-card-subtitle>{{ author.title | uppercase }}</mat-card-subtitle>
