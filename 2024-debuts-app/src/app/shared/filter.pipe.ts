@@ -8,23 +8,25 @@ import { Author } from '../types';
 export class FilterPipe implements PipeTransform {
   transform(
     authors: Author[] | null,
-    searchConfig?: { authorName: string; bookTitle: string }
+    searchConfig?: { authorName?: string; bookTitle?: string }
   ): any[] | null {
-    if (authors && searchConfig) {
+    let filteredAuthors = authors;
+    if (filteredAuthors && searchConfig) {
       if (searchConfig.authorName) {
-        return authors.filter((author) =>
+        filteredAuthors = filteredAuthors.filter((author) =>
           author.name
             .toLowerCase()
-            .includes(searchConfig.authorName.toLowerCase())
+            .includes(searchConfig.authorName!.toLowerCase())
         );
-      } else if (searchConfig.bookTitle) {
-        return authors.filter((author) =>
+      }
+      if (searchConfig.bookTitle) {
+        filteredAuthors = filteredAuthors.filter((author) =>
           author.title
             .toLowerCase()
-            .includes(searchConfig.bookTitle.toLowerCase())
+            .includes(searchConfig.bookTitle!.toLowerCase())
         );
       }
     }
-    return authors;
+    return filteredAuthors;
   }
 }
