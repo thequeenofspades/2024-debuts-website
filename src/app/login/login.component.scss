@@ -1,0 +1,22 @@
+.login-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+  width: 100%;
+}
+
+.login-card {
+  box-sizing: border-box;
+  width: 500px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+}

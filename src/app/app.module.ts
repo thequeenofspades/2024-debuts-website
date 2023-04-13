@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,6 +17,8 @@ import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
     AuthorsComponent,
     FilterPipe,
     AuthorDetailComponent,
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -33,6 +37,7 @@ import { providePerformance,getPerformance } from '@angular/fire/performance';
     BrowserModule,
     FormsModule,
     MaterialModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

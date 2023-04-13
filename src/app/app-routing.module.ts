@@ -9,6 +9,8 @@ import {
 
 import { AuthorsComponent } from './authors/authors.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @Injectable({ providedIn: 'root' })
 export class DebutAppTitleStrategy extends TitleStrategy {
@@ -34,6 +36,16 @@ const routes: Routes = [
     path: 'authors',
     component: AuthorsComponent,
     title: 'Authors',
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login',
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    title: 'Create an account',
   },
   {
     path: '**',

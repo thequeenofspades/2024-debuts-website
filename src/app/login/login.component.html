@@ -1,0 +1,34 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <h2>Log in</h2>
+    </mat-card-header>
+
+    <form [formGroup]="form">
+      <mat-card-content class="login-form">
+        <mat-form-field>
+          <mat-label>Email address</mat-label>
+          <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+        <mat-error *ngIf="error">{{ error }}</mat-error>
+      </mat-card-content>
+
+      <mat-card-actions class="button-row" align="end">
+        <a href="/signup" mat-flat-button>Don't have an account? Register</a>
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="form.invalid"
+          (click)="login()">
+          LOG IN
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
