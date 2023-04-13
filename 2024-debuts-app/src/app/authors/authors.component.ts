@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthorService } from '../services/author.service';
-import { Author } from '../types';
+import { AgeCategory, Author, Genre } from '../types';
 
 @Component({
   selector: 'app-authors',
@@ -11,12 +11,11 @@ import { Author } from '../types';
 })
 export class AuthorsComponent {
   authors$: Observable<Author[]>;
-  authorName?: string;
-  bookTitle?: string;
-  searchConfig?: any = {
-    authorName: '',
-    bookTitle: '',
-  };
+
+  searchConfig?: any = {};
+
+  readonly ageCategories: string[] = Object.values(AgeCategory);
+  readonly genres: string[] = Object.values(Genre);
 
   constructor(private authorService: AuthorService) {
     this.authors$ = authorService.getAuthorsForDisplay();
