@@ -1,0 +1,19 @@
+<div class="authors-container">
+  <mat-form-field>
+    <input matInput placeholder="Search by author name" [(ngModel)]="authorName">
+  </mat-form-field>
+
+  <div class="author-cards-container">
+    <mat-card class="author-card" *ngFor="let author of ((authors$ | async) | filter: authorName)">
+      <mat-card-header>
+        <mat-card-title>{{ author.name }}</mat-card-title>
+        <mat-card-subtitle>{{ author.title | uppercase }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png">
+    </mat-card>
+
+    <div class="author-card-empty"></div>
+    <div class="author-card-empty"></div>
+    <div class="author-card-empty"></div>
+  </div>
+</div>
