@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FilterPipe } from './shared/filter.pipe';
 import { MaterialModule } from './shared/material.module';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { AuthorDetailComponent } from './authors/author-detail/author-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     HomeComponent,
     AuthorsComponent,
     FilterPipe,
+    AuthorDetailComponent,
   ],
   imports: [
     AppRoutingModule,

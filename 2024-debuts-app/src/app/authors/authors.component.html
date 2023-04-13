@@ -31,7 +31,10 @@
   </div>
 
   <div class="author-cards-container">
-    <mat-card class="author-card" *ngFor="let author of ((authors$ | async) | filter: searchConfig)">
+    <mat-card
+      class="author-card"
+      *ngFor="let author of ((authors$ | async) | filter: searchConfig)"
+      (click)="openAuthorDetailDialog(author)">
       <mat-card-header>
         <mat-card-title>{{ author.name }}</mat-card-title>
         <mat-card-subtitle>{{ author.title | uppercase }}</mat-card-subtitle>
