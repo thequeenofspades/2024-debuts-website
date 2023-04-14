@@ -1,19 +1,27 @@
 <div class="signup-container">
   <mat-card class="signup-card">
     <mat-card-header>
-      <h2>Create an account</h2>
+      <mat-card-title>
+        <h2>Create an account</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <h3>
+          You only need an account if you're a debut author and want to add your
+          own profile!
+        </h3>
+      </mat-card-subtitle>
     </mat-card-header>
 
     <form [formGroup]="form">
       <mat-card-content class="signup-form">
         <mat-form-field>
           <mat-label>Email address</mat-label>
-          <input matInput type="email" formControlName="email">
+          <input matInput type="email" formControlName="email" />
         </mat-form-field>
 
         <mat-form-field>
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password1">
+          <input matInput type="password" formControlName="password1" />
           <mat-error *ngIf="form.get('password1')?.hasError('minlength')">
             Password must contain minimum 8 characters.
           </mat-error>
@@ -21,13 +29,13 @@
 
         <mat-form-field>
           <mat-label>Confirm password</mat-label>
-          <input matInput type="password" formControlName="password2">
+          <input matInput type="password" formControlName="password2" />
           <mat-error *ngIf="form.get('password2')?.hasError('mismatch')">
             Passwords must match.
           </mat-error>
         </mat-form-field>
 
-        <mat-error *ngIf="error">{{error}}</mat-error>
+        <mat-error *ngIf="error">{{ error }}</mat-error>
       </mat-card-content>
 
       <mat-card-actions class="button-row" align="end">
@@ -36,8 +44,9 @@
           mat-flat-button
           color="primary"
           [disabled]="form.invalid || submitting"
-          (click)="signup()">
-          {{ submitting ? 'REGISTERING...' : 'REGISTER' }}
+          (click)="signup()"
+        >
+          {{ submitting ? "REGISTERING..." : "REGISTER" }}
         </button>
       </mat-card-actions>
     </form>

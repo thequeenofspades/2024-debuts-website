@@ -1,0 +1,76 @@
+<div class="profile-form-container">
+  <form [formGroup]="form" class="profile-form">
+    <p>First, fill in some information about yourself:</p>
+
+    <mat-form-field>
+      <mat-label>Name (or pen name, if applicable)</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <p>Next, fill in information about your book:</p>
+
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Publisher</mat-label>
+      <input matInput formControlName="publisher" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Age Category</mat-label>
+      <mat-select formControlName="ageCategory" multiple>
+        <mat-option
+          *ngFor="let ageCategory of ageCategories"
+          [value]="ageCategory"
+        >
+          {{ ageCategory }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genre" multiple>
+        <mat-option *ngFor="let genre of genres" [value]="genre">
+          {{ genre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Release Season</mat-label>
+      <mat-select formControlName="season">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let season of seasons" [value]="season">
+          {{ season }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Release Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="releaseDate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+
+    <div class="button-row">
+      <button mat-flat-button (click)="cancel()">CANCEL</button>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="form.invalid"
+        (click)="submit()"
+      >
+        CREATE MY PROFILE
+      </button>
+    </div>
+  </form>
+</div>

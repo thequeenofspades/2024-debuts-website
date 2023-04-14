@@ -1,0 +1,17 @@
+.profile-form-container {
+  box-sizing: border-box;
+  padding: 24px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}

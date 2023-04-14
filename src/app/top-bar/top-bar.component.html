@@ -5,7 +5,12 @@
   <mat-toolbar-row>
     <button mat-button (click)="navigate('/home')">home</button>
     <button mat-button (click)="navigate('/authors')">authors</button>
-    <button mat-button (click)="navigate('/login')" *ngIf="!(authState$ | async)">login</button>
+    <button mat-button (click)="navigate('/profile')" *ngIf="authState$ | async">
+      my profile
+    </button>
+    <button mat-button (click)="navigate('/login')" *ngIf="!(authState$ | async)">
+      login
+    </button>
     <button mat-button (click)="logout()" *ngIf="(authState$ | async)">logout</button>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -19,6 +19,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SignupComponent } from './signup/signup.component';
     AuthorDetailComponent,
     LoginComponent,
     SignupComponent,
+    ProfileComponent,
+    ProfileFormComponent,
   ],
   imports: [
     AppRoutingModule,

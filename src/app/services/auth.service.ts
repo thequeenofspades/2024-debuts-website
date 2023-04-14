@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { getAuth, createUserWithEmailAndPassword, Auth, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 
 @Injectable({
@@ -21,4 +22,13 @@ export class AuthService {
   logout(): Observable<void> {
     return from(this.auth.signOut());
   }
+}
+
+export const authGuard = () => {
+  const auth = inject(Auth);
+  const router = inject(Router);
+  if (auth.currentUser) {
+    return true;
+  }
+  return router.parseUrl('/login');
 }

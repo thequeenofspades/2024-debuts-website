@@ -1,4 +1,4 @@
-import { Injectable, NgModule } from '@angular/core';
+import { Injectable, NgModule, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
   RouterModule,
@@ -11,6 +11,9 @@ import { AuthorsComponent } from './authors/authors.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { Auth } from '@angular/fire/auth';
+import { authGuard } from './services/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class DebutAppTitleStrategy extends TitleStrategy {
@@ -29,8 +32,8 @@ export class DebutAppTitleStrategy extends TitleStrategy {
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    title: 'Home',
+    redirectTo: '/home',
+    pathMatch: 'full',
   },
   {
     path: 'authors',
@@ -45,7 +48,13 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
-    title: 'Create an account',
+    title: 'Create an Account',
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    title: 'My Profile',
+    canActivate: [authGuard],
   },
   {
     path: '**',
