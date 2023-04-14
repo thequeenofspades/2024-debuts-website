@@ -3,8 +3,9 @@
     <h1 class="app-title" (click)="navigate('/home')">2024 Debuts</h1>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <a mat-button href="/home">home</a>
-    <a mat-button href="/authors">authors</a>
-    <a mat-button href="/login">login</a>
+    <button mat-button (click)="navigate('/home')">home</button>
+    <button mat-button (click)="navigate('/authors')">authors</button>
+    <button mat-button (click)="navigate('/login')" *ngIf="!(authState$ | async)">login</button>
+    <button mat-button (click)="logout()" *ngIf="(authState$ | async)">logout</button>
   </mat-toolbar-row>
 </mat-toolbar>

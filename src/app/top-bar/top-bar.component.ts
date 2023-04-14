@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Auth, authState, User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { Observable, take } from 'rxjs';
+
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -7,9 +11,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./top-bar.component.scss'],
 })
 export class TopBarComponent {
-  constructor(private router: Router) {}
+  auth: Auth = inject(Auth);
+  authState$: Observable<User | null> = authState(this.auth);
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   navigate(url: string): void {
     this.router.navigate([url]);
+  }
+
+  logout(): void {
+    this.authService.logout().pipe(take(1)).subscribe();
   }
 }
