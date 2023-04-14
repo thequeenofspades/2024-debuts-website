@@ -19,13 +19,16 @@ export class AuthorsComponent {
   readonly ageCategories: string[] = Object.values(AgeCategory);
   readonly genres: string[] = Object.values(Genre);
 
+  readonly placeholderAuthorImageUrl: string =
+    'https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png';
+
   constructor(private authorService: AuthorService, private dialog: MatDialog) {
-    this.authors$ = authorService.getAuthorsForDisplay();
+    this.authors$ = this.authorService.getAuthorsForDisplay();
   }
 
   openAuthorDetailDialog(author: Author): void {
     this.dialog.open(AuthorDetailComponent, {
-      data: author
+      data: author,
     });
   }
 }

@@ -1,10 +1,18 @@
 <div class="authors-container">
   <div class="search-fields">
     <mat-form-field>
-      <input matInput placeholder="Search by author name" [(ngModel)]="searchConfig.authorName">
+      <input
+        matInput
+        placeholder="Search by author name"
+        [(ngModel)]="searchConfig.authorName"
+      />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Search by book title" [(ngModel)]="searchConfig.bookTitle">
+      <input
+        matInput
+        placeholder="Search by book title"
+        [(ngModel)]="searchConfig.bookTitle"
+      />
     </mat-form-field>
   </div>
 
@@ -13,7 +21,10 @@
       <mat-label>Select Age Category</mat-label>
       <mat-select [(ngModel)]="searchConfig.ageCategory">
         <mat-option [value]=""></mat-option>
-        <mat-option *ngFor="let ageCategory of ageCategories" [value]="ageCategory">
+        <mat-option
+          *ngFor="let ageCategory of ageCategories"
+          [value]="ageCategory"
+        >
           {{ ageCategory }}
         </mat-option>
       </mat-select>
@@ -33,13 +44,17 @@
   <div class="author-cards-container">
     <mat-card
       class="author-card"
-      *ngFor="let author of ((authors$ | async) | filter: searchConfig)"
-      (click)="openAuthorDetailDialog(author)">
+      *ngFor="let author of authors$ | async | filter : searchConfig"
+      (click)="openAuthorDetailDialog(author)"
+    >
       <mat-card-header>
         <mat-card-title>{{ author.name }}</mat-card-title>
         <mat-card-subtitle>{{ author.title | uppercase }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image src="https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png">
+      <img
+        mat-card-image
+        [src]="author.authorPhotoUrl ?? placeholderAuthorImageUrl"
+      />
     </mat-card>
 
     <div class="author-card-empty"></div>

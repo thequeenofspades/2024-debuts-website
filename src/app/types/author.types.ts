@@ -6,6 +6,8 @@ export interface Author {
   releaseDate?: Date;
   ageCategory?: AgeCategory | AgeCategory[];
   genre?: Genre | Genre[];
+  authorPhotoUrl?: string;
+  bookCoverUrl?: string;
 }
 
 export enum Season {

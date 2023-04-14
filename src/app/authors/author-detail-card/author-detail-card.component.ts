@@ -9,6 +9,9 @@ import { Author } from 'src/app/types';
 export class AuthorDetailCardComponent {
   @Input() author?: Author;
 
+  readonly placeholderAuthorImageUrl: string =
+    'https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png';
+
   getAgeCategories(): string {
     if (!this.author) return '';
 

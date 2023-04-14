@@ -1,7 +1,7 @@
 <div class="author-detail-card" *ngIf="author">
   <img
     class="author-photo"
-    src="https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png"
+    [src]="author.authorPhotoUrl ?? placeholderAuthorImageUrl"
   />
   <div>
     <h1>{{ author.name }}</h1>
