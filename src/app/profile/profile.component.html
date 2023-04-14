@@ -3,8 +3,20 @@
 
   <p>You're logged in as {{ (user$ | async)?.email }}.</p>
 
-  <button mat-flat-button color="primary" (click)="openNewProfileDialog()">
-    <mat-icon class="material-symbols-outlined"> add_box </mat-icon>
-    CREATE YOUR PROFILE
-  </button>
+  <div *ngIf="!authorLookupComplete">
+    <mat-spinner color="accent"></mat-spinner>
+  </div>
+
+  <div *ngIf="authorLookupComplete">
+    <ng-container *ngIf="!!author; else newProfile">
+      <app-author-detail-card [author]="author"></app-author-detail-card>
+    </ng-container>
+
+    <ng-template #newProfile>
+      <button mat-flat-button color="primary" (click)="openNewProfileDialog()">
+        <mat-icon class="material-symbols-outlined"> add_box </mat-icon>
+        CREATE YOUR PROFILE
+      </button>
+    </ng-template>
+  </div>
 </div>

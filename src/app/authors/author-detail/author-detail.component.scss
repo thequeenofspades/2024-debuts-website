@@ -1,12 +1,6 @@
 .author-detail-container {
   box-sizing: border-box;
-  display: flex;
-  gap: 12px;
   max-height: min(700px, 90vh);
   max-width: min(800px, 100vw);
   padding: 24px;
-}
-
-.author-photo {
-  max-width: 50%;
 }

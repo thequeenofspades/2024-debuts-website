@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
@@ -11,16 +11,29 @@ import { Author } from '../types';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   auth: Auth = inject(Auth);
   user$ = user(this.auth);
 
   author?: Author;
+  authorLookupComplete: boolean = false;
 
   constructor(
     private authorService: AuthorService,
     private dialog: MatDialog
   ) {}
+
+  ngOnInit(): void {
+    this.authorService
+      .getAuthorDetailsForUser(this.user$)
+      .pipe(take(1))
+      .subscribe((author) => {
+        this.authorLookupComplete = true;
+        if (!!author) {
+          this.author = author;
+        }
+      });
+  }
 
   openNewProfileDialog(): void {
     this.dialog
@@ -28,9 +41,10 @@ export class ProfileComponent {
       .afterClosed()
       .pipe(take(1))
       .subscribe((data) => {
-        this.authorService
-          .createAuthor(data)
-          .subscribe((author) => (this.author = author));
+        this.authorService.createAuthor(data, this.user$).subscribe((_) => {
+          this.author = data;
+          this.authorLookupComplete = true;
+        });
       });
   }
 }

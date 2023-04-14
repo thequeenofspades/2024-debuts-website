@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
+import { AuthorDetailCardComponent } from './authors/author-detail-card/author-detail-card.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ProfileFormComponent } from './profile/profile-form/profile-form.compon
     SignupComponent,
     ProfileComponent,
     ProfileFormComponent,
+    AuthorDetailCardComponent,
   ],
   imports: [
     AppRoutingModule,

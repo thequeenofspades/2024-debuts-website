@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Observable, concatMap, from, map, of, take } from 'rxjs';
+import { Observable, concatMap, filter, from, map, of, take } from 'rxjs';
 
 import authors from '../authors.json';
 import { Author } from '../types';
@@ -8,8 +8,12 @@ import {
   addDoc,
   collection,
   collectionData,
+  doc,
   getDoc,
+  serverTimestamp,
+  setDoc,
 } from '@angular/fire/firestore';
+import { User } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -25,14 +29,36 @@ export class AuthorService {
     return collectionData(authorCollection) as Observable<Author[]>;
   }
 
-  createAuthor(author: Author): Observable<Author> {
-    return from(addDoc(collection(this.db, 'authors'), author)).pipe(
+  createAuthor(
+    author: Author,
+    user$: Observable<User | null>
+  ): Observable<void> {
+    return user$.pipe(
+      filter((user) => !!user),
       take(1),
-      concatMap((docRef) => {
-        return getDoc(docRef);
+      concatMap((user) =>
+        from(
+          setDoc(doc(this.db, 'authors', user!.uid), {
+            ...author,
+            created: serverTimestamp(),
+          })
+        )
+      )
+    );
+  }
+
+  getAuthorDetailsForUser(
+    user$: Observable<User | null>
+  ): Observable<Author | null> {
+    return user$.pipe(
+      filter((user) => !!user),
+      take(1),
+      concatMap((user) => {
+        return from(getDoc(doc(this.db, 'authors', user!.uid)));
       }),
       map((doc) => {
-        return doc.data() as Author;
+        const data = doc.data();
+        return data ? (data as Author) : null;
       })
     );
   }
