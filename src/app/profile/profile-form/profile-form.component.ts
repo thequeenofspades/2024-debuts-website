@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DateTime } from 'luxon';
 import { AgeCategory, Author, Genre, Season } from 'src/app/types';
 
 export enum Mode {
@@ -56,6 +57,17 @@ export class ProfileFormComponent {
   submit(): void {
     if (this.form.invalid) return;
 
-    this.dialogRef.close(this.form.value);
+    let releaseDate: DateTime | string | null =
+      this.form.get('releaseDate')?.value;
+    if (releaseDate instanceof DateTime) {
+      releaseDate = releaseDate.toISODate();
+    }
+
+    const formData = {
+      ...this.form.value,
+      releaseDate: releaseDate,
+    };
+
+    this.dialogRef.close(formData);
   }
 }

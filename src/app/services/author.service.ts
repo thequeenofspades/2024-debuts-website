@@ -8,6 +8,7 @@ import {
   addDoc,
   collection,
   collectionData,
+  deleteDoc,
   doc,
   getDoc,
   serverTimestamp,
@@ -79,6 +80,14 @@ export class AuthorService {
           })
         )
       )
+    );
+  }
+
+  deleteAuthor(user$: Observable<User | null>): Observable<void> {
+    return user$.pipe(
+      filter((user) => !!user),
+      take(1),
+      concatMap((user) => from(deleteDoc(doc(this.db, 'authors', user!.uid))))
     );
   }
 }

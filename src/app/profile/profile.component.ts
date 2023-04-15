@@ -8,6 +8,7 @@ import {
 import { take } from 'rxjs';
 import { AuthorService } from '../services/author.service';
 import { Author } from '../types';
+import { DeleteProfileDialogComponent } from './delete-profile-dialog/delete-profile-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -64,6 +65,20 @@ export class ProfileComponent implements OnInit {
         this.authorService.updateAuthor(data, this.user$).subscribe((_) => {
           this.author = data;
         });
+      });
+  }
+
+  openDeleteProfileDialog(): void {
+    this.dialog
+      .open(DeleteProfileDialogComponent)
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((confirm) => {
+        if (confirm) {
+          this.authorService.deleteAuthor(this.user$).subscribe((_) => {
+            this.author = undefined;
+          });
+        }
       });
   }
 }
