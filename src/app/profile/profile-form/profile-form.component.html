@@ -1,13 +1,15 @@
 <div class="profile-form-container">
   <form [formGroup]="form" class="profile-form">
-    <p>First, fill in some information about yourself:</p>
+    <p *ngIf="mode === 0">First, fill in some information about yourself:</p>
+    <p *ngIf="mode === 1">Author information:</p>
 
     <mat-form-field>
       <mat-label>Name (or pen name, if applicable)</mat-label>
       <input matInput formControlName="name" />
     </mat-form-field>
 
-    <p>Next, fill in information about your book:</p>
+    <p *ngIf="mode === 0">Next, fill in information about your book:</p>
+    <p *ngIf="mode === 1">Book information:</p>
 
     <mat-form-field>
       <mat-label>Title</mat-label>
@@ -69,7 +71,7 @@
         [disabled]="form.invalid"
         (click)="submit()"
       >
-        CREATE MY PROFILE
+        {{ mode === 0 ? "CREATE MY PROFILE" : "SAVE" }}
       </button>
     </div>
   </form>

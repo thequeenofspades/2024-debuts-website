@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AgeCategory, Author, Genre, Season } from 'src/app/types';
+
+export enum Mode {
+  CREATE,
+  UPDATE,
+}
 
 @Component({
   selector: 'app-profile-form',
@@ -10,6 +15,7 @@ import { AgeCategory, Author, Genre, Season } from 'src/app/types';
 })
 export class ProfileFormComponent {
   form: FormGroup;
+  mode: Mode;
 
   ageCategories: string[] = Object.values(AgeCategory);
   genres: string[] = Object.values(Genre);
@@ -19,6 +25,7 @@ export class ProfileFormComponent {
   startDate: Date = new Date(2024, 0, 1);
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) private data: { author?: Author; mode: Mode },
     private dialogRef: MatDialogRef<ProfileFormComponent>,
     private fb: FormBuilder
   ) {
@@ -34,6 +41,12 @@ export class ProfileFormComponent {
       season: fb.control(''),
       releaseDate: fb.control(''),
     });
+
+    if (!!this.data.author) {
+      this.form.patchValue(this.data.author);
+    }
+
+    this.mode = this.data.mode;
   }
 
   cancel(): void {

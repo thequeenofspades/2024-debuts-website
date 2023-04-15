@@ -12,6 +12,7 @@ import {
   getDoc,
   serverTimestamp,
   setDoc,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { User } from '@angular/fire/auth';
 
@@ -60,6 +61,24 @@ export class AuthorService {
         const data = doc.data();
         return data ? (data as Author) : null;
       })
+    );
+  }
+
+  updateAuthor(
+    author: Author,
+    user$: Observable<User | null>
+  ): Observable<void> {
+    return user$.pipe(
+      filter((user) => !!user),
+      take(1),
+      concatMap((user) =>
+        from(
+          updateDoc(doc(this.db, 'authors', user!.uid), {
+            ...author,
+            updated: serverTimestamp(),
+          })
+        )
+      )
     );
   }
 }

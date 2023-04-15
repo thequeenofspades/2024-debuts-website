@@ -1,7 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Auth, user } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
-import { ProfileFormComponent } from './profile-form/profile-form.component';
+import {
+  Mode,
+  ProfileFormComponent,
+} from './profile-form/profile-form.component';
 import { take } from 'rxjs';
 import { AuthorService } from '../services/author.service';
 import { Author } from '../types';
@@ -37,13 +40,29 @@ export class ProfileComponent implements OnInit {
 
   openNewProfileDialog(): void {
     this.dialog
-      .open(ProfileFormComponent)
+      .open(ProfileFormComponent, { data: { mode: Mode.CREATE } })
       .afterClosed()
       .pipe(take(1))
       .subscribe((data) => {
+        if (!data) return;
         this.authorService.createAuthor(data, this.user$).subscribe((_) => {
           this.author = data;
           this.authorLookupComplete = true;
+        });
+      });
+  }
+
+  openUpdateProfileDialog(): void {
+    this.dialog
+      .open(ProfileFormComponent, {
+        data: { author: this.author, mode: Mode.UPDATE },
+      })
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((data) => {
+        if (!data) return;
+        this.authorService.updateAuthor(data, this.user$).subscribe((_) => {
+          this.author = data;
         });
       });
   }

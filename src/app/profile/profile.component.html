@@ -9,6 +9,14 @@
 
   <div *ngIf="authorLookupComplete">
     <ng-container *ngIf="!!author; else newProfile">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="openUpdateProfileDialog()"
+      >
+        <mat-icon class="material-symbols-outlined">edit</mat-icon>
+        UPDATE PROFILE
+      </button>
       <app-author-detail-card [author]="author"></app-author-detail-card>
     </ng-container>
 
