@@ -9,19 +9,25 @@
 
   <div *ngIf="authorLookupComplete">
     <ng-container *ngIf="!!author; else newProfile">
-      <button
-        mat-flat-button
-        color="primary"
-        (click)="openUpdateProfileDialog()"
-      >
-        <mat-icon class="material-symbols-outlined">edit</mat-icon>
-        UPDATE PROFILE
-      </button>
+      <div class="button-row">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="openUpdateProfileDialog()"
+        >
+          <mat-icon class="material-symbols-outlined">edit</mat-icon>
+          UPDATE PROFILE
+        </button>
+        <button
+          mat-flat-button
+          color="warn"
+          (click)="openDeleteProfileDialog()"
+        >
+          <mat-icon class="material-symbols-outlined">delete</mat-icon>
+          DELETE PROFILE
+        </button>
+      </div>
       <app-author-detail-card [author]="author"></app-author-detail-card>
-      <button mat-flat-button color="warn" (click)="openDeleteProfileDialog()">
-        <mat-icon class="material-symbols-outlined">delete</mat-icon>
-        DELETE PROFILE
-      </button>
     </ng-container>
 
     <ng-template #newProfile>

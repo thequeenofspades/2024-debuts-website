@@ -1,16 +1,26 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <h1 class="app-title" (click)="navigate('/home')">2024 Debuts</h1>
+    <span class="app-title" (click)="navigate('/home')">2024 Debuts</span>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <button mat-button (click)="navigate('/home')">home</button>
     <button mat-button (click)="navigate('/authors')">authors</button>
-    <button mat-button (click)="navigate('/profile')" *ngIf="authState$ | async">
+    <button
+      mat-button
+      (click)="navigate('/profile')"
+      *ngIf="authState$ | async"
+    >
       my profile
     </button>
-    <button mat-button (click)="navigate('/login')" *ngIf="!(authState$ | async)">
+    <button
+      mat-button
+      (click)="navigate('/login')"
+      *ngIf="!(authState$ | async)"
+    >
       login
     </button>
-    <button mat-button (click)="logout()" *ngIf="(authState$ | async)">logout</button>
+    <button mat-button (click)="logout()" *ngIf="authState$ | async">
+      logout
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>

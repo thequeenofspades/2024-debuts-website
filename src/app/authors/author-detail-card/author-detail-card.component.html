@@ -1,16 +1,35 @@
 <div class="author-detail-card" *ngIf="author">
-  <img
-    class="author-photo"
-    [src]="author.authorPhotoUrl ?? placeholderAuthorImageUrl"
-  />
-  <div>
-    <h1>{{ author.name }}</h1>
-    <h2>{{ author.title | uppercase }}</h2>
-    <h3>{{ author.publisher }}</h3>
-    <p *ngIf="releaseDateAvailable()">
-      Release Date: {{ formatReleaseDate() }}
-    </p>
-    <p *ngIf="author.ageCategory">Age Category: {{ getAgeCategories() }}</p>
-    <p *ngIf="author.genre">Genre: {{ getGenres() }}</p>
-  </div>
+  <mat-card class="author-card">
+    <mat-card-header>
+      <mat-card-subtitle>Author</mat-card-subtitle>
+      <mat-card-title>{{ author.name }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      class="author-photo"
+      [src]="author.authorPhotoUrl ?? placeholderAuthorImageUrl"
+    />
+    <mat-card-content>
+      <p>{{ author.bio }}</p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="book-card">
+    <mat-card-header>
+      <mat-card-subtitle>Book</mat-card-subtitle>
+      <mat-card-title>{{ author.title | uppercase }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      class="author-photo"
+      [src]="author.bookCoverUrl ?? placeholderBookCoverUrl"
+    />
+    <mat-card-content>
+      <p>Publisher: {{ author.publisher }}</p>
+      <p *ngIf="releaseDateAvailable()">
+        Release Date: {{ formatReleaseDate() }}
+      </p>
+      <p *ngIf="author.ageCategory">Age Category: {{ getAgeCategories() }}</p>
+      <p *ngIf="author.genre">Genre: {{ getGenres() }}</p>
+    </mat-card-content>
+  </mat-card>
 </div>

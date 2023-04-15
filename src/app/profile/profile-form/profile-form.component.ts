@@ -31,7 +31,10 @@ export class ProfileFormComponent {
     private fb: FormBuilder
   ) {
     this.form = fb.group({
+      // Author details
       name: fb.control('', [Validators.required]),
+      bio: fb.control(''),
+      // Book details
       title: fb.control('', [Validators.required]),
       publisher: fb.control('', [Validators.required]),
       ageCategory: fb.control(

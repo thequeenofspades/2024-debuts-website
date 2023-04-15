@@ -11,6 +11,8 @@ export class AuthorDetailCardComponent {
 
   readonly placeholderAuthorImageUrl: string =
     'https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png';
+  readonly placeholderBookCoverUrl: string =
+    'https://m.media-amazon.com/images/I/51d9LaVcPWL._AC_UF1000,1000_QL80_.jpg';
 
   getAgeCategories(): string {
     if (!this.author) return '';

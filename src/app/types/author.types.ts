@@ -1,12 +1,15 @@
 export interface Author {
+  // Author details
   name: string;
+  authorPhotoUrl?: string;
+  bio?: string;
+  // Book details
   title: string;
   publisher: string;
   season?: Season;
   releaseDate?: Date;
   ageCategory?: AgeCategory | AgeCategory[];
   genre?: Genre | Genre[];
-  authorPhotoUrl?: string;
   bookCoverUrl?: string;
 }
 

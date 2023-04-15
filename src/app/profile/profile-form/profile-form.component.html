@@ -8,6 +8,11 @@
       <input matInput formControlName="name" />
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Short bio</mat-label>
+      <textarea matInput formControlName="bio"></textarea>
+    </mat-form-field>
+
     <p *ngIf="mode === 0">Next, fill in information about your book:</p>
     <p *ngIf="mode === 1">Book information:</p>
 
