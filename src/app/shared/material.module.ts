@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatLuxonDateModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatSlideToggleModule,
     MatToolbarModule,
   ],
   exports: [
@@ -36,6 +38,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatLuxonDateModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatSlideToggleModule,
     MatToolbarModule,
   ],
 })

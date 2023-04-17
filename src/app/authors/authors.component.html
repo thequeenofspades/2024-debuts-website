@@ -41,6 +41,10 @@
     </mat-form-field>
   </div>
 
+  <div class="search-fields">
+    <mat-slide-toggle [(ngModel)]="showCovers">Show covers</mat-slide-toggle>
+  </div>
+
   <div class="author-cards-container">
     <mat-card
       class="author-card"
@@ -53,7 +57,11 @@
       </mat-card-header>
       <img
         mat-card-image
-        [src]="author.authorPhotoUrl ?? placeholderAuthorImageUrl"
+        [src]="
+          showCovers
+            ? author.bookCoverUrl ?? placeholderBookCoverUrl
+            : author.authorPhotoUrl ?? placeholderAuthorImageUrl
+        "
       />
     </mat-card>
 
