@@ -5,6 +5,7 @@ import { AuthorService } from '../services/author.service';
 import { AgeCategory, Author, Genre } from '../types';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-authors',
@@ -20,13 +21,19 @@ export class AuthorsComponent {
   readonly ageCategories: string[] = Object.values(AgeCategory);
   readonly genres: string[] = Object.values(Genre);
 
-  readonly placeholderAuthorImageUrl: string =
-    'https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png';
-  readonly placeholderBookCoverUrl: string =
-    'https://m.media-amazon.com/images/I/51d9LaVcPWL._AC_UF1000,1000_QL80_.jpg';
+  placeholderAuthorPhotoUrl: string;
+  placeholderBookCoverUrl: string;
 
-  constructor(private authorService: AuthorService, private dialog: MatDialog) {
+  constructor(
+    private authorService: AuthorService,
+    private dialog: MatDialog,
+    private storageService: StorageService
+  ) {
     this.authors$ = this.authorService.getAuthorsForDisplay();
+    this.placeholderAuthorPhotoUrl =
+      this.storageService.getPlaceholderAuthorPhotoUrl();
+    this.placeholderBookCoverUrl =
+      this.storageService.getPlaceholderBookCoverUrl();
   }
 
   openAuthorDetailDialog(author: Author): void {

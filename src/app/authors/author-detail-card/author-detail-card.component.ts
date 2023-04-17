@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { StorageService } from 'src/app/services/storage.service';
 import { Author } from 'src/app/types';
 
 @Component({
@@ -9,10 +11,15 @@ import { Author } from 'src/app/types';
 export class AuthorDetailCardComponent {
   @Input() author?: Author;
 
-  readonly placeholderAuthorImageUrl: string =
-    'https://helios-i.mashable.com/imagery/articles/01Fzl1MROydyq66J8rXDNzr/hero-image.fill.size_1200x1200.v1614267976.png';
-  readonly placeholderBookCoverUrl: string =
-    'https://m.media-amazon.com/images/I/51d9LaVcPWL._AC_UF1000,1000_QL80_.jpg';
+  placeholderAuthorPhotoUrl: string;
+  placeholderBookCoverUrl: string;
+
+  constructor(private storageService: StorageService) {
+    this.placeholderAuthorPhotoUrl =
+      this.storageService.getPlaceholderAuthorPhotoUrl();
+    this.placeholderBookCoverUrl =
+      this.storageService.getPlaceholderBookCoverUrl();
+  }
 
   getAgeCategories(): string {
     if (!this.author) return '';
