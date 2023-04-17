@@ -9,7 +9,9 @@
 
 .search-fields {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
 }
 
 .author-cards-container {
@@ -24,7 +26,6 @@
   box-sizing: border-box;
   cursor: pointer;
   flex-grow: 1;
-  padding: 12px;
   width: min(300px, calc(100vw - 24px));
 }
 

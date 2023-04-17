@@ -1,5 +1,6 @@
 .author-detail-card {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -8,9 +9,11 @@
 }
 
 .author-card {
+  max-width: 700px;
   width: 100%;
 }
 
 .book-card {
+  max-width: 700px;
   width: 100%;
 }
