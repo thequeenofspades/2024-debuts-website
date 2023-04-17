@@ -1,0 +1,17 @@
+<div class="photo-upload-container">
+  <input type="file" accept="image/*" (change)="selectFile($event)" />
+  <mat-error *ngIf="error">{{ error }}</mat-error>
+  <img *ngIf="preview" [src]="preview" />
+
+  <div class="button-row">
+    <button mat-flat-button (click)="cancel()">CANCEL</button>
+    <button
+      mat-flat-button
+      [disabled]="!success"
+      color="primary"
+      (click)="save()"
+    >
+      SAVE
+    </button>
+  </div>
+</div>

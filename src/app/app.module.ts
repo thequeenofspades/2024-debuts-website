@@ -29,6 +29,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileFormComponent } from './profile/profile-form/profile-form.component';
 import { AuthorDetailCardComponent } from './authors/author-detail-card/author-detail-card.component';
 import { DeleteProfileDialogComponent } from './profile/delete-profile-dialog/delete-profile-dialog.component';
+import { UploadPhotoDialogComponent } from './profile/upload-photo-dialog/upload-photo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DeleteProfileDialogComponent } from './profile/delete-profile-dialog/de
     ProfileFormComponent,
     AuthorDetailCardComponent,
     DeleteProfileDialogComponent,
+    UploadPhotoDialogComponent,
   ],
   imports: [
     AppRoutingModule,

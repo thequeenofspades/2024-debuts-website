@@ -26,6 +26,18 @@
           <mat-icon class="material-symbols-outlined">delete</mat-icon>
           DELETE PROFILE
         </button>
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="openAuthorPhotoDialog()"
+        >
+          <mat-icon class="material-symbols-outlined">add_a_photo</mat-icon>
+          ADD AUTHOR PHOTO
+        </button>
+        <button mat-flat-button color="primary" (click)="openBookCoverDialog()">
+          <mat-icon class="material-symbols-outlined">add_a_photo</mat-icon>
+          ADD BOOK COVER
+        </button>
       </div>
       <app-author-detail-card [author]="author"></app-author-detail-card>
     </ng-container>

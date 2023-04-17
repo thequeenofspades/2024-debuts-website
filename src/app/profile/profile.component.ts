@@ -5,11 +5,13 @@ import {
   Mode,
   ProfileFormComponent,
 } from './profile-form/profile-form.component';
-import { Subject, take, takeUntil } from 'rxjs';
+import { Subject, concatMap, take, takeUntil } from 'rxjs';
 import { AuthorService } from '../services/author.service';
 import { Author } from '../types';
 import { DeleteProfileDialogComponent } from './delete-profile-dialog/delete-profile-dialog.component';
 import { Router } from '@angular/router';
+import { UploadPhotoDialogComponent } from './upload-photo-dialog/upload-photo-dialog.component';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-profile',
@@ -28,19 +30,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private authorService: AuthorService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
-    this.authorService
-      .getAuthorDetailsForUser(this.user$)
-      .pipe(take(1))
-      .subscribe((author) => {
-        this.authorLookupComplete = true;
-        if (!!author) {
-          this.author = author;
-        }
-      });
+    this.getAuthor();
     this.user$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
       if (!user) {
         this.router.navigate(['/login']);
@@ -51,6 +46,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  getAuthor(): void {
+    this.authorService
+      .getAuthorDetailsForUser(this.user$)
+      .pipe(take(1))
+      .subscribe((author) => {
+        this.authorLookupComplete = true;
+        if (!!author) {
+          this.author = author;
+        }
+      });
   }
 
   openNewProfileDialog(): void {
@@ -91,6 +98,68 @@ export class ProfileComponent implements OnInit, OnDestroy {
         if (confirm) {
           this.authorService.deleteAuthor(this.user$).subscribe((_) => {
             this.author = undefined;
+          });
+        }
+      });
+  }
+
+  openAuthorPhotoDialog(): void {
+    this.dialog
+      .open(UploadPhotoDialogComponent)
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((data) => {
+        if (data) {
+          this.user$.pipe(take(1)).subscribe((user) => {
+            if (user && this.author) {
+              this.storageService
+                .uploadAuthorPhoto(data, user.uid)
+                .pipe(
+                  concatMap((imageUrl) =>
+                    this.authorService.updateAuthor(
+                      {
+                        ...this.author!,
+                        authorPhotoUrl: imageUrl,
+                      },
+                      this.user$
+                    )
+                  )
+                )
+                .subscribe((_) => {
+                  this.getAuthor();
+                });
+            }
+          });
+        }
+      });
+  }
+
+  openBookCoverDialog(): void {
+    this.dialog
+      .open(UploadPhotoDialogComponent)
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((data) => {
+        if (data) {
+          this.user$.pipe(take(1)).subscribe((user) => {
+            if (user && this.author) {
+              this.storageService
+                .uploadBookCover(data, user.uid)
+                .pipe(
+                  concatMap((imageUrl) =>
+                    this.authorService.updateAuthor(
+                      {
+                        ...this.author!,
+                        bookCoverUrl: imageUrl,
+                      },
+                      this.user$
+                    )
+                  )
+                )
+                .subscribe((_) => {
+                  this.getAuthor();
+                });
+            }
           });
         }
       });
