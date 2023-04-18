@@ -3,6 +3,7 @@ import {
   getDownloadURL,
   ref,
   Storage,
+  updateMetadata,
   uploadBytes,
 } from '@angular/fire/storage';
 import { concatMap, from, Observable } from 'rxjs';
@@ -18,7 +19,14 @@ export class StorageService {
     const storageRef = ref(this.storage, 'author_photos/'.concat(uid));
     return from(uploadBytes(storageRef, file)).pipe(
       concatMap((uploadResult) => {
-        return from(getDownloadURL(uploadResult.ref));
+        // Create file metadata to update
+        const newMetadata = {
+          cacheControl: 'public,max-age=300',
+        };
+        return from(updateMetadata(uploadResult.ref, newMetadata));
+      }),
+      concatMap((fullMetadata) => {
+        return from(getDownloadURL(fullMetadata.ref!));
       })
     );
   }
@@ -28,7 +36,14 @@ export class StorageService {
     const storageRef = ref(this.storage, 'book_covers/'.concat(uid));
     return from(uploadBytes(storageRef, file)).pipe(
       concatMap((uploadResult) => {
-        return from(getDownloadURL(uploadResult.ref));
+        // Create file metadata to update
+        const newMetadata = {
+          cacheControl: 'public,max-age=300',
+        };
+        return from(updateMetadata(uploadResult.ref, newMetadata));
+      }),
+      concatMap((fullMetadata) => {
+        return from(getDownloadURL(fullMetadata.ref!));
       })
     );
   }
