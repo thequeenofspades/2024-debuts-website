@@ -43,10 +43,6 @@ export class UploadPhotoDialogComponent {
     reader.readAsDataURL(file);
   }
 
-  cancel(): void {
-    this.dialogRef.close();
-  }
-
   save(): void {
     this.dialogRef.close({ image: this.file, altText: this.altText });
   }

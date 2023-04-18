@@ -1,6 +1,14 @@
-<div class="photo-upload-container">
-  <input type="file" accept="image/*" (change)="selectFile($event)" />
-  <mat-error *ngIf="error">{{ error }}</mat-error>
+<mat-dialog-content class="mat-typography photo-upload-container">
+  <div>
+    <input
+      type="file"
+      accept="image/*"
+      (change)="selectFile($event)"
+      cdkFocusInitial
+    />
+    <mat-error *ngIf="error">{{ error }}</mat-error>
+  </div>
+
   <img *ngIf="preview" [src]="preview" class="preview-photo" />
 
   <mat-form-field>
@@ -10,16 +18,15 @@
       placeholder="Alt text for image"
     ></textarea>
   </mat-form-field>
-
-  <div class="button-row">
-    <button mat-flat-button (click)="cancel()">CANCEL</button>
-    <button
-      mat-flat-button
-      [disabled]="!success"
-      color="primary"
-      (click)="save()"
-    >
-      SAVE
-    </button>
-  </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions class="button-row" align="end">
+  <button mat-flat-button mat-dialog-close>CANCEL</button>
+  <button
+    mat-flat-button
+    [disabled]="!success"
+    color="primary"
+    (click)="save()"
+  >
+    SAVE
+  </button>
+</mat-dialog-actions>
