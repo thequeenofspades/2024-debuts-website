@@ -67,11 +67,8 @@
       </mat-card-header>
       <img
         mat-card-image
-        [src]="
-          showCovers
-            ? author.bookCoverUrl ?? placeholderBookCoverUrl
-            : author.authorPhotoUrl ?? placeholderAuthorPhotoUrl
-        "
+        *ngIf="showCovers ? author.bookCoverUrl : author.authorPhotoUrl"
+        [src]="showCovers ? author.bookCoverUrl : author.authorPhotoUrl"
         [alt]="showCovers ? author.bookCoverAltText : author.authorPhotoAltText"
         loading="lazy"
       />

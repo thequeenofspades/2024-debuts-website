@@ -4,11 +4,11 @@
       <mat-card-subtitle>Author</mat-card-subtitle>
       <mat-card-title>{{ author.name }}</mat-card-title>
     </mat-card-header>
-    <div class="card-image-wrapper">
+    <div class="card-image-wrapper" *ngIf="author.authorPhotoUrl">
       <img
         mat-card-image
         class="author-photo"
-        [src]="author.authorPhotoUrl ?? placeholderAuthorPhotoUrl"
+        [src]="author.authorPhotoUrl"
         [alt]="author.authorPhotoAltText"
       />
       <button
@@ -42,11 +42,11 @@
       <mat-card-subtitle>Book</mat-card-subtitle>
       <mat-card-title>{{ author.title | uppercase }}</mat-card-title>
     </mat-card-header>
-    <div class="card-image-wrapper">
+    <div class="card-image-wrapper" *ngIf="author.bookCoverUrl">
       <img
         mat-card-image
         class="author-photo"
-        [src]="author.bookCoverUrl ?? placeholderBookCoverUrl"
+        [src]="author.bookCoverUrl"
         [alt]="author.bookCoverAltText"
       />
       <button

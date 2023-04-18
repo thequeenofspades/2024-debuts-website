@@ -13,14 +13,6 @@ import { concatMap, from, Observable } from 'rxjs';
 export class StorageService {
   constructor(private storage: Storage) {}
 
-  getPlaceholderAuthorPhotoUrl(): string {
-    return 'assets/jpg/placeholder_author_photo.jpg';
-  }
-
-  getPlaceholderBookCoverUrl(): string {
-    return 'assets/jpg/placeholder_book_cover.jpg';
-  }
-
   /** Uploads an author photo and returns the URL pointing to the resource. */
   uploadAuthorPhoto(file: File, uid: string): Observable<string> {
     const storageRef = ref(this.storage, 'author_photos/'.concat(uid));

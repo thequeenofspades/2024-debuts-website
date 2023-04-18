@@ -13,18 +13,10 @@ import { Author } from 'src/app/types';
 export class AuthorDetailCardComponent {
   @Input() author?: Author;
 
-  placeholderAuthorPhotoUrl: string;
-  placeholderBookCoverUrl: string;
-
   constructor(
     private dialog: MatDialog,
     private storageService: StorageService
-  ) {
-    this.placeholderAuthorPhotoUrl =
-      this.storageService.getPlaceholderAuthorPhotoUrl();
-    this.placeholderBookCoverUrl =
-      this.storageService.getPlaceholderBookCoverUrl();
-  }
+  ) {}
 
   getAgeCategories(): string {
     if (!this.author) return '';

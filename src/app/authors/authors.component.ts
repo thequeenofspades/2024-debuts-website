@@ -22,19 +22,12 @@ export class AuthorsComponent {
   readonly genres: string[] = Object.values(Genre);
   readonly seasons: string[] = Object.values(Season);
 
-  placeholderAuthorPhotoUrl: string;
-  placeholderBookCoverUrl: string;
-
   constructor(
     private authorService: AuthorService,
     private dialog: MatDialog,
     private storageService: StorageService
   ) {
     this.authors$ = this.authorService.getAuthorsForDisplay();
-    this.placeholderAuthorPhotoUrl =
-      this.storageService.getPlaceholderAuthorPhotoUrl();
-    this.placeholderBookCoverUrl =
-      this.storageService.getPlaceholderBookCoverUrl();
   }
 
   openAuthorDetailDialog(author: Author): void {
