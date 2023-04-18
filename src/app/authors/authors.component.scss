@@ -28,11 +28,11 @@
   box-sizing: border-box;
   cursor: pointer;
   flex-grow: 1;
-  width: min(300px, calc(100vw - 24px));
+  width: 200px;
 }
 
 .author-card-empty {
   flex-grow: 1;
   height: 0px;
-  width: min(300px, calc(100vw - 24px));
+  width: 200px;
 }
