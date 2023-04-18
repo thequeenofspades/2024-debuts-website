@@ -23,6 +23,13 @@ export class FilterPipe implements PipeTransform {
             .includes(searchConfig.bookTitle!.toLowerCase())
         );
       }
+      if (searchConfig.publisher) {
+        filteredAuthors = filteredAuthors.filter((author) =>
+          author.publisher
+            .toLowerCase()
+            .includes(searchConfig.publisher!.toLowerCase())
+        );
+      }
       if (searchConfig.ageCategory) {
         filteredAuthors = filteredAuthors.filter((author) => {
           if (Array.isArray(author.ageCategory)) {
