@@ -30,6 +30,7 @@ import { ProfileFormComponent } from './profile/profile-form/profile-form.compon
 import { AuthorDetailCardComponent } from './authors/author-detail-card/author-detail-card.component';
 import { DeleteProfileDialogComponent } from './profile/delete-profile-dialog/delete-profile-dialog.component';
 import { UploadPhotoDialogComponent } from './profile/upload-photo-dialog/upload-photo-dialog.component';
+import { AccountRecoveryDialogComponent } from './login/account-recovery-dialog/account-recovery-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { UploadPhotoDialogComponent } from './profile/upload-photo-dialog/upload
     AuthorDetailCardComponent,
     DeleteProfileDialogComponent,
     UploadPhotoDialogComponent,
+    AccountRecoveryDialogComponent,
   ],
   imports: [
     AppRoutingModule,

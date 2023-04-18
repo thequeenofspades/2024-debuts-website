@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountRecoveryDialogComponent } from './account-recovery-dialog/account-recovery-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private authService: AuthService,
+    private dialog: MatDialog,
     private fb: FormBuilder,
     private router: Router
   ) {
@@ -63,5 +66,9 @@ export class LoginComponent implements OnDestroy {
           this.submitting = false;
         }
       );
+  }
+
+  openAccountRecoveryDialog(): void {
+    this.dialog.open(AccountRecoveryDialogComponent);
   }
 }

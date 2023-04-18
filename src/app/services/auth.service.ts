@@ -1,15 +1,22 @@
 import { Injectable, inject } from '@angular/core';
-import { getAuth, createUserWithEmailAndPassword, Auth, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  Auth,
+  signInWithEmailAndPassword,
+  UserCredential,
+  sendPasswordResetEmail,
+} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Observable, from } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   auth: Auth = inject(Auth);
 
-  constructor() { }
+  constructor() {}
 
   register(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -22,6 +29,10 @@ export class AuthService {
   logout(): Observable<void> {
     return from(this.auth.signOut());
   }
+
+  resetPassword(email: string): Observable<void> {
+    return from(sendPasswordResetEmail(this.auth, email));
+  }
 }
 
 export const authGuard = () => {
@@ -31,4 +42,4 @@ export const authGuard = () => {
     return true;
   }
   return router.parseUrl('/login');
-}
+};
