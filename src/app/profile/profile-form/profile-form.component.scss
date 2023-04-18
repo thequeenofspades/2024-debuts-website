@@ -2,8 +2,7 @@
   box-sizing: border-box;
   padding: 24px;
   max-height: 90vh;
-  max-width: 90vw;
-  width: 700px;
+  width: min(700px, 100%);
 }
 
 .profile-form {
@@ -19,10 +18,14 @@
   margin-top: 12px;
 }
 
+.author-links {
+  padding-left: 8px;
+}
+
 .author-link {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
