@@ -1,10 +1,10 @@
-<div class="delete-profile-dialog">
+<mat-dialog-content class="delete-profile-dialog mat-typography">
   <h2>Are you sure you want to delete your profile? This can't be undone.</h2>
   <h3>You can make a new one, though!</h3>
-  <div class="button-row">
-    <button mat-flat-button (click)="cancel()">CANCEL</button>
-    <button mat-flat-button color="warn" (click)="confirm()">
-      YES, DELETE MY PROFILE
-    </button>
-  </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions class="button-row mat-typography" align="end">
+  <button mat-flat-button mat-dialog-close cdkFocusInitial>CANCEL</button>
+  <button mat-flat-button color="warn" (click)="confirm()">
+    YES, DELETE MY PROFILE
+  </button>
+</mat-dialog-actions>

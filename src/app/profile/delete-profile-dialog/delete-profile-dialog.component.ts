@@ -9,10 +9,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DeleteProfileDialogComponent {
   constructor(private dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {}
 
-  cancel(): void {
-    this.dialogRef.close(false);
-  }
-
   confirm(): void {
     this.dialogRef.close(true);
   }

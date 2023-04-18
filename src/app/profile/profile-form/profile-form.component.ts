@@ -71,10 +71,6 @@ export class ProfileFormComponent {
     return this.form.get('links') as FormArray;
   }
 
-  cancel(): void {
-    this.dialogRef.close();
-  }
-
   submit(): void {
     if (this.form.invalid) return;
 

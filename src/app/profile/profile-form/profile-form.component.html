@@ -1,11 +1,11 @@
-<div class="profile-form-container">
-  <form [formGroup]="form" class="profile-form">
+<form [formGroup]="form">
+  <mat-dialog-content class="mat-typography profile-form-container">
     <p *ngIf="mode === 0">First, fill in some information about yourself:</p>
     <p *ngIf="mode === 1">Author information:</p>
 
     <mat-form-field>
       <mat-label>Name (or pen name, if applicable)</mat-label>
-      <input matInput formControlName="name" />
+      <input matInput formControlName="name" cdkFocusInitial />
     </mat-form-field>
 
     <mat-form-field>
@@ -105,17 +105,16 @@
       <mat-label>Link to preorder</mat-label>
       <input matInput formControlName="preorderUrl" />
     </mat-form-field>
-
-    <div class="button-row">
-      <button mat-flat-button (click)="cancel()">CANCEL</button>
-      <button
-        mat-flat-button
-        color="primary"
-        [disabled]="form.invalid"
-        (click)="submit()"
-      >
-        {{ mode === 0 ? "CREATE MY PROFILE" : "SAVE" }}
-      </button>
-    </div>
-  </form>
-</div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="mat-typography button-row" align="end">
+    <button mat-flat-button mat-dialog-close>CANCEL</button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="form.invalid"
+      (click)="submit()"
+    >
+      {{ mode === 0 ? "CREATE MY PROFILE" : "SAVE" }}
+    </button>
+  </mat-dialog-actions>
+</form>

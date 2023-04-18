@@ -1,5 +1,5 @@
 <div class="author-detail-card" *ngIf="author">
-  <mat-card class="author-card">
+  <mat-card class="author-card" appearance="outlined">
     <mat-card-header>
       <mat-card-subtitle>Author</mat-card-subtitle>
       <mat-card-title>{{ author.name }}</mat-card-title>
@@ -37,7 +37,7 @@
       </div>
     </mat-card-actions>
   </mat-card>
-  <mat-card class="book-card">
+  <mat-card class="book-card" appearance="outlined">
     <mat-card-header>
       <mat-card-subtitle>Book</mat-card-subtitle>
       <mat-card-title>{{ author.title | uppercase }}</mat-card-title>
