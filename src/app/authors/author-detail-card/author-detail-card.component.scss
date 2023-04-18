@@ -1,7 +1,10 @@
 .author-detail-card {
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
+  width: fit-content;
 }
 
 .author-photo {
@@ -16,4 +19,11 @@
 .book-card {
   max-width: 500px;
   width: 100%;
+}
+
+.button-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }

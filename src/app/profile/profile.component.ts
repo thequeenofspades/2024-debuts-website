@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         if (!data) return;
         this.authorService.updateAuthor(data, this.user$).subscribe((_) => {
-          this.author = data;
+          this.getAuthor();
         });
       });
   }

@@ -13,6 +13,34 @@
       <textarea matInput formControlName="bio"></textarea>
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Representation</mat-label>
+      <input matInput formControlName="rep" />
+    </mat-form-field>
+
+    <div class="author-links" formArrayName="links">
+      <div
+        *ngFor="let link of links().controls; let i = index"
+        [formGroupName]="i"
+        class="author-link"
+      >
+        <mat-form-field>
+          <mat-label>Link name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Link URL</mat-label>
+          <input matInput formControlName="url" />
+        </mat-form-field>
+        <button mat-icon-button color="accent" (click)="deleteAuthorLink(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+      <button mat-flat-button color="accent" (click)="addAuthorLink()">
+        <mat-icon>add_link</mat-icon>ADD LINK
+      </button>
+    </div>
+
     <p *ngIf="mode === 0">Next, fill in information about your book:</p>
     <p *ngIf="mode === 1">Book information:</p>
 
@@ -66,6 +94,16 @@
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Link to add on Goodreads</mat-label>
+      <input matInput formControlName="goodreadsUrl" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Link to preorder</mat-label>
+      <input matInput formControlName="preorderUrl" />
     </mat-form-field>
 
     <div class="button-row">

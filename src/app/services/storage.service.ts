@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '@angular/fire/auth';
 import {
-  Storage,
   getDownloadURL,
   ref,
+  Storage,
   uploadBytes,
 } from '@angular/fire/storage';
-import { Observable, concatMap, filter, from, take } from 'rxjs';
+import { concatMap, from, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

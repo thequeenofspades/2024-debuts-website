@@ -3,6 +3,8 @@ export interface Author {
   name: string;
   authorPhotoUrl?: string;
   bio?: string;
+  rep?: string;
+  links?: AuthorLink[];
   // Book details
   title: string;
   publisher: string;
@@ -11,6 +13,13 @@ export interface Author {
   ageCategory?: AgeCategory | AgeCategory[];
   genre?: Genre | Genre[];
   bookCoverUrl?: string;
+  goodreadsUrl?: string;
+  preorderUrl?: string;
+}
+
+export interface AuthorLink {
+  name: string;
+  url: string;
 }
 
 export enum Season {

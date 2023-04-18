@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { DateTime } from 'luxon';
-import { AgeCategory, Author, Genre, Season } from 'src/app/types';
+import { AgeCategory, Author, AuthorLink, Genre, Season } from 'src/app/types';
 
 export enum Mode {
   CREATE,
@@ -33,7 +33,9 @@ export class ProfileFormComponent {
     this.form = fb.group({
       // Author details
       name: fb.control('', [Validators.required]),
-      bio: fb.control(''),
+      bio: '',
+      rep: '',
+      links: fb.array([]),
       // Book details
       title: fb.control('', [Validators.required]),
       publisher: fb.control('', [Validators.required]),
@@ -42,15 +44,31 @@ export class ProfileFormComponent {
         [Validators.minLength(1), Validators.required]
       ),
       genre: fb.control([], [Validators.minLength(1), Validators.required]),
-      season: fb.control(''),
-      releaseDate: fb.control(''),
+      season: '',
+      releaseDate: '',
+      goodreadsUrl: '',
+      preorderUrl: '',
     });
 
     if (!!this.data.author) {
       this.form.patchValue(this.data.author);
+      this.data.author.links?.forEach((_) => this.addAuthorLink());
+      this.links().patchValue(this.data.author.links ?? []);
     }
 
     this.mode = this.data.mode;
+  }
+
+  addAuthorLink(): void {
+    this.links().push(this.fb.group({ name: '', url: '' }));
+  }
+
+  deleteAuthorLink(index: number): void {
+    this.links().removeAt(index);
+  }
+
+  links(): FormArray {
+    return this.form.get('links') as FormArray;
   }
 
   cancel(): void {

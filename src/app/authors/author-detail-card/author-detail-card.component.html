@@ -10,8 +10,21 @@
       [src]="author.authorPhotoUrl ?? placeholderAuthorPhotoUrl"
     />
     <mat-card-content>
+      <p *ngIf="author.rep"><b>Representation</b>: {{ author.rep }}</p>
       <p>{{ author.bio }}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <div class="button-row">
+        <a
+          *ngFor="let link of author.links"
+          [href]="fixLink(link.url)"
+          target="_blank"
+          mat-flat-button
+          color="primary"
+          >{{ link.name | uppercase }}</a
+        >
+      </div>
+    </mat-card-actions>
   </mat-card>
   <mat-card class="book-card">
     <mat-card-header>
@@ -24,12 +37,34 @@
       [src]="author.bookCoverUrl ?? placeholderBookCoverUrl"
     />
     <mat-card-content>
-      <p>Publisher: {{ author.publisher }}</p>
+      <p><b>Publisher</b>: {{ author.publisher }}</p>
       <p *ngIf="releaseDateAvailable()">
-        Release Date: {{ formatReleaseDate() }}
+        <b>Release Date</b>: {{ formatReleaseDate() }}
       </p>
-      <p *ngIf="author.ageCategory">Age Category: {{ getAgeCategories() }}</p>
-      <p *ngIf="author.genre">Genre: {{ getGenres() }}</p>
+      <p *ngIf="author.ageCategory">
+        <b>Age Category</b>: {{ getAgeCategories() }}
+      </p>
+      <p *ngIf="author.genre"><b>Genre</b>: {{ getGenres() }}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <div class="button-row">
+        <a
+          [href]="fixLink(author.goodreadsUrl)"
+          target="_blank"
+          mat-flat-button
+          color="primary"
+          *ngIf="author.goodreadsUrl"
+          >ADD ON GOODREADS</a
+        >
+        <a
+          [href]="fixLink(author.preorderUrl)"
+          target="_blank"
+          mat-flat-button
+          color="accent"
+          *ngIf="author.preorderUrl"
+          >PREORDER</a
+        >
+      </div>
+    </mat-card-actions>
   </mat-card>
 </div>

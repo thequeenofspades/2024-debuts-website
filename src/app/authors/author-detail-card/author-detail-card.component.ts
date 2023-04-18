@@ -58,4 +58,10 @@ export class AuthorDetailCardComponent {
       return this.author.season!.concat(' 2024');
     }
   }
+
+  // Appends 'http://' to the link if it isn't already there.
+  fixLink(link: string): string {
+    if (link.startsWith('http://') || link.startsWith('https://')) return link;
+    return 'http://'.concat(link);
+  }
 }
