@@ -30,7 +30,7 @@ export class LoginComponent implements OnDestroy {
   ) {
     this.authState$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
       if (user) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/profile']);
       }
     });
     this.form = fb.group({
