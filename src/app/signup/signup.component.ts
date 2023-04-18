@@ -6,9 +6,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -24,7 +25,16 @@ export class SignupComponent implements OnDestroy {
 
   readonly destroy$ = new Subject<void>();
 
-  constructor(private authService: AuthService, private fb: FormBuilder) {
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.authState$.pipe(takeUntil(this.destroy$)).subscribe((user) => {
+      if (user) {
+        this.router.navigate(['/profile']);
+      }
+    });
     this.form = fb.group(
       {
         email: fb.control('', [Validators.email, Validators.required]),
@@ -61,8 +71,7 @@ export class SignupComponent implements OnDestroy {
         this.form.get('password1')!.value
       )
       .subscribe(
-        (userCred) => {
-          console.log(userCred);
+        (_) => {
           this.submitting = false;
         },
         (error) => {

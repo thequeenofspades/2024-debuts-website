@@ -51,8 +51,7 @@ export class LoginComponent implements OnDestroy {
     this.authService
       .login(this.form.get('email')!.value, this.form.get('password')!.value)
       .subscribe(
-        (userCred) => {
-          console.log(userCred);
+        (_) => {
           this.submitting = false;
         },
         (error) => {
