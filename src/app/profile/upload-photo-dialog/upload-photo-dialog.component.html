@@ -1,7 +1,15 @@
 <div class="photo-upload-container">
   <input type="file" accept="image/*" (change)="selectFile($event)" />
   <mat-error *ngIf="error">{{ error }}</mat-error>
-  <img *ngIf="preview" [src]="preview" />
+  <img *ngIf="preview" [src]="preview" class="preview-photo" />
+
+  <mat-form-field>
+    <textarea
+      matInput
+      [(ngModel)]="altText"
+      placeholder="Alt text for image"
+    ></textarea>
+  </mat-form-field>
 
   <div class="button-row">
     <button mat-flat-button (click)="cancel()">CANCEL</button>

@@ -7,6 +7,16 @@
   width: fit-content;
 }
 
+.card-image-wrapper {
+  position: relative;
+}
+
+.alt-text-button {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
 .author-photo {
   max-width: 100%;
 }

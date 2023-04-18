@@ -105,21 +105,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   openAuthorPhotoDialog(): void {
     this.dialog
-      .open(UploadPhotoDialogComponent)
+      .open(UploadPhotoDialogComponent, { width: '400px' })
       .afterClosed()
       .pipe(take(1))
-      .subscribe((data) => {
+      .subscribe((data: { image: File; altText: string }) => {
         if (data) {
           this.user$.pipe(take(1)).subscribe((user) => {
             if (user && this.author) {
               this.storageService
-                .uploadAuthorPhoto(data, user.uid)
+                .uploadAuthorPhoto(data.image, user.uid)
                 .pipe(
                   concatMap((imageUrl) =>
                     this.authorService.updateAuthor(
                       {
                         ...this.author!,
                         authorPhotoUrl: imageUrl,
+                        authorPhotoAltText: data.altText,
                       },
                       this.user$
                     )
@@ -136,21 +137,22 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   openBookCoverDialog(): void {
     this.dialog
-      .open(UploadPhotoDialogComponent)
+      .open(UploadPhotoDialogComponent, { width: '400px' })
       .afterClosed()
       .pipe(take(1))
-      .subscribe((data) => {
+      .subscribe((data: { image: File; altText: string }) => {
         if (data) {
           this.user$.pipe(take(1)).subscribe((user) => {
             if (user && this.author) {
               this.storageService
-                .uploadBookCover(data, user.uid)
+                .uploadBookCover(data.image, user.uid)
                 .pipe(
                   concatMap((imageUrl) =>
                     this.authorService.updateAuthor(
                       {
                         ...this.author!,
                         bookCoverUrl: imageUrl,
+                        bookCoverAltText: data.altText,
                       },
                       this.user$
                     )

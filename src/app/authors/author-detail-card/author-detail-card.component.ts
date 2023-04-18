@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/services/storage.service';
+import { AltTextDialogComponent } from 'src/app/shared/alt-text-dialog/alt-text-dialog.component';
 import { Author } from 'src/app/types';
 
 @Component({
@@ -14,7 +16,10 @@ export class AuthorDetailCardComponent {
   placeholderAuthorPhotoUrl: string;
   placeholderBookCoverUrl: string;
 
-  constructor(private storageService: StorageService) {
+  constructor(
+    private dialog: MatDialog,
+    private storageService: StorageService
+  ) {
     this.placeholderAuthorPhotoUrl =
       this.storageService.getPlaceholderAuthorPhotoUrl();
     this.placeholderBookCoverUrl =
@@ -63,5 +68,9 @@ export class AuthorDetailCardComponent {
   fixLink(link: string): string {
     if (link.startsWith('http://') || link.startsWith('https://')) return link;
     return 'http://'.concat(link);
+  }
+
+  openAltTextDialog(altText?: string): void {
+    this.dialog.open(AltTextDialogComponent, { data: altText, width: '400px' });
   }
 }

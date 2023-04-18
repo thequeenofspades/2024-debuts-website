@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./upload-photo-dialog.component.scss'],
 })
 export class UploadPhotoDialogComponent {
+  altText: string = '';
   error?: string;
   file?: File;
   preview: any;
@@ -47,6 +48,6 @@ export class UploadPhotoDialogComponent {
   }
 
   save(): void {
-    this.dialogRef.close(this.file);
+    this.dialogRef.close({ image: this.file, altText: this.altText });
   }
 }

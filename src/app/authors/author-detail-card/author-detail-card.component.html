@@ -4,11 +4,22 @@
       <mat-card-subtitle>Author</mat-card-subtitle>
       <mat-card-title>{{ author.name }}</mat-card-title>
     </mat-card-header>
-    <img
-      mat-card-image
-      class="author-photo"
-      [src]="author.authorPhotoUrl ?? placeholderAuthorPhotoUrl"
-    />
+    <div class="card-image-wrapper">
+      <img
+        mat-card-image
+        class="author-photo"
+        [src]="author.authorPhotoUrl ?? placeholderAuthorPhotoUrl"
+        [alt]="author.authorPhotoAltText"
+      />
+      <button
+        mat-stroked-button
+        class="alt-text-button"
+        aria-label="Button to show image alt text"
+        (click)="openAltTextDialog(author.authorPhotoAltText)"
+      >
+        ALT
+      </button>
+    </div>
     <mat-card-content>
       <p *ngIf="author.rep"><b>Representation</b>: {{ author.rep }}</p>
       <p>{{ author.bio }}</p>
@@ -31,11 +42,22 @@
       <mat-card-subtitle>Book</mat-card-subtitle>
       <mat-card-title>{{ author.title | uppercase }}</mat-card-title>
     </mat-card-header>
-    <img
-      mat-card-image
-      class="author-photo"
-      [src]="author.bookCoverUrl ?? placeholderBookCoverUrl"
-    />
+    <div class="card-image-wrapper">
+      <img
+        mat-card-image
+        class="author-photo"
+        [src]="author.bookCoverUrl ?? placeholderBookCoverUrl"
+        [alt]="author.bookCoverAltText"
+      />
+      <button
+        mat-stroked-button
+        class="alt-text-button"
+        aria-label="Button to show image alt text"
+        (click)="openAltTextDialog(author.bookCoverAltText)"
+      >
+        ALT
+      </button>
+    </div>
     <mat-card-content>
       <p><b>Publisher</b>: {{ author.publisher }}</p>
       <p *ngIf="releaseDateAvailable()">

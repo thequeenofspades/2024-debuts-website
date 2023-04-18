@@ -12,9 +12,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AltTextDialogComponent } from './alt-text-dialog/alt-text-dialog.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    AltTextDialogComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,

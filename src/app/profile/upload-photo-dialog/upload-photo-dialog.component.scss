@@ -2,12 +2,17 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   padding: 24px;
+  width: min(100%, 400px);
+}
+
+.preview-photo {
+  width: min(100%, 400px);
 }
 
 .button-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
 }

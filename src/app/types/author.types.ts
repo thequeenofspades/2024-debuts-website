@@ -2,6 +2,7 @@ export interface Author {
   // Author details
   name: string;
   authorPhotoUrl?: string;
+  authorPhotoAltText?: string;
   bio?: string;
   rep?: string;
   links?: AuthorLink[];
@@ -13,6 +14,7 @@ export interface Author {
   ageCategory?: AgeCategory | AgeCategory[];
   genre?: Genre | Genre[];
   bookCoverUrl?: string;
+  bookCoverAltText?: string;
   goodreadsUrl?: string;
   preorderUrl?: string;
 }

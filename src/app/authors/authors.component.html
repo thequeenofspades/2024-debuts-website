@@ -62,6 +62,7 @@
             ? author.bookCoverUrl ?? placeholderBookCoverUrl
             : author.authorPhotoUrl ?? placeholderAuthorPhotoUrl
         "
+        [alt]="showCovers ? author.bookCoverAltText : author.authorPhotoAltText"
         loading="lazy"
       />
     </mat-card>
