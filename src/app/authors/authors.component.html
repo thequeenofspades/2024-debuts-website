@@ -39,6 +39,16 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select Season</mat-label>
+      <mat-select [(ngModel)]="searchConfig.season">
+        <mat-option [value]=""> </mat-option>
+        <mat-option *ngFor="let season of seasons" [value]="season">
+          {{ season }}
+        </mat-option>
+      </mat-select></mat-form-field
+    >
   </div>
 
   <div class="search-fields">

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthorService } from '../services/author.service';
-import { AgeCategory, Author, Genre } from '../types';
+import { AgeCategory, Author, Genre, Season } from '../types';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthorDetailComponent } from './author-detail/author-detail.component';
 import { StorageService } from '../services/storage.service';
@@ -20,6 +20,7 @@ export class AuthorsComponent {
 
   readonly ageCategories: string[] = Object.values(AgeCategory);
   readonly genres: string[] = Object.values(Genre);
+  readonly seasons: string[] = Object.values(Season);
 
   placeholderAuthorPhotoUrl: string;
   placeholderBookCoverUrl: string;
