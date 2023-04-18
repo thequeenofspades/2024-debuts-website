@@ -21,6 +21,7 @@
       </button>
     </div>
     <mat-card-content>
+      <p *ngIf="author.pronouns"><b>Pronouns</b>: {{ author.pronouns }}</p>
       <p *ngIf="author.rep"><b>Representation</b>: {{ author.rep }}</p>
       <p>{{ author.bio }}</p>
     </mat-card-content>

@@ -34,6 +34,7 @@ export class ProfileFormComponent {
       // Author details
       name: fb.control('', [Validators.required]),
       bio: '',
+      pronouns: '',
       rep: '',
       links: fb.array([]),
       // Book details

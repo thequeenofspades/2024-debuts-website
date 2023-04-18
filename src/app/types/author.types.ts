@@ -4,6 +4,7 @@ export interface Author {
   authorPhotoUrl?: string;
   authorPhotoAltText?: string;
   bio?: string;
+  pronouns?: string;
   rep?: string;
   links?: AuthorLink[];
   // Book details
