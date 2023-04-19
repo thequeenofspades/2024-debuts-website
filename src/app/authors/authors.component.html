@@ -83,26 +83,17 @@
   </div>
 
   <div class="author-cards-container">
-    <mat-card
-      class="author-card"
-      *ngFor="let author of authors$ | async | filter : searchConfig"
-      (click)="openAuthorDetailDialog(author)"
-    >
-      <mat-card-header>
-        <mat-card-title>{{ author.name }}</mat-card-title>
-        <mat-card-subtitle>{{ author.title | uppercase }}</mat-card-subtitle>
-      </mat-card-header>
-      <img
-        mat-card-image
-        *ngIf="showCovers ? author.bookCoverUrl : author.authorPhotoUrl"
-        [src]="showCovers ? author.bookCoverUrl : author.authorPhotoUrl"
-        [alt]="showCovers ? author.bookCoverAltText : author.authorPhotoAltText"
-        loading="lazy"
-        height="200px"
-        width="100%"
-        class="author-card-image"
-      />
-    </mat-card>
+    <app-author-preview-card
+      *ngFor="
+        let author of authors$
+          | async
+          | filter : searchConfig
+          | sortAuthors : showCovers
+      "
+      [author]="author"
+      [showCovers]="showCovers"
+      [style.flex-grow]="1"
+    ></app-author-preview-card>
 
     <div class="author-card-empty"></div>
     <div class="author-card-empty"></div>

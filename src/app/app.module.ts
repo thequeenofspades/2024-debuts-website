@@ -32,6 +32,8 @@ import { DeleteProfileDialogComponent } from './profile/delete-profile-dialog/de
 import { UploadPhotoDialogComponent } from './profile/upload-photo-dialog/upload-photo-dialog.component';
 import { AccountRecoveryDialogComponent } from './login/account-recovery-dialog/account-recovery-dialog.component';
 import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
+import { AuthorPreviewCardComponent } from './authors/author-preview-card/author-preview-card.component';
+import { SortAuthorsPipe } from './shared/sort-authors.pipe';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
     HomeComponent,
     AuthorsComponent,
     FilterPipe,
+    SortAuthorsPipe,
     AuthorDetailComponent,
     LoginComponent,
     SignupComponent,
@@ -50,6 +53,7 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
     UploadPhotoDialogComponent,
     AccountRecoveryDialogComponent,
     BottomBarComponent,
+    AuthorPreviewCardComponent,
   ],
   imports: [
     AppRoutingModule,
