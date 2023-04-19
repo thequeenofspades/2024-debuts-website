@@ -1,0 +1,11 @@
+// Shared
+@import "shared/variables";
+
+.app-content-container {
+  height: calc(100% - (3 * $desktop-toolbar-height));
+  overflow-y: auto;
+
+  @media (max-width: 599px) {
+    height: calc(100% - (3 * $mobile-toolbar-height));
+  }
+}
