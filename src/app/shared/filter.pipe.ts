@@ -58,6 +58,23 @@ export class FilterPipe implements PipeTransform {
           (author) => !!author.preorderUrl
         );
       }
+      if (searchConfig.startDate) {
+        filteredAuthors = filteredAuthors.filter((author) => {
+          return (
+            author.releaseDate &&
+            Date.parse(author.releaseDate) >=
+              (searchConfig.startDate as Date).valueOf()
+          );
+        });
+      }
+      if (searchConfig.endDate) {
+        filteredAuthors = filteredAuthors.filter(
+          (author) =>
+            author.releaseDate &&
+            Date.parse(author.releaseDate) <=
+              (searchConfig.endDate as Date).valueOf()
+        );
+      }
     }
     return filteredAuthors;
   }
