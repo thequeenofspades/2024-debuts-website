@@ -22,4 +22,8 @@ export class AuthorsComponent {
   constructor(private authorService: AuthorService) {
     this.authors$ = this.authorService.getAuthorsForDisplay();
   }
+
+  clearFilters(): void {
+    this.searchConfig = {};
+  }
 }

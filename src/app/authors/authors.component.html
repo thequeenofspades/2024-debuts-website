@@ -82,7 +82,13 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <div class="show-cover-toggle">
+  <div class="single-search-field">
+    <button mat-flat-button color="primary" (click)="clearFilters()">
+      CLEAR ALL FILTERS
+    </button>
+  </div>
+
+  <div class="single-search-field">
     <mat-slide-toggle [(ngModel)]="showCovers">Show covers</mat-slide-toggle>
   </div>
 
