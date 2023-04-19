@@ -43,12 +43,14 @@ export enum AgeCategory {
 
 export enum Genre {
   ACTION_ADVENTURE = 'Action/Adventure',
+  BIPOC = 'BIPOC',
   COMEDY = 'Comedy',
   CONTEMPORARY = 'Contemporary',
   CRIME = 'Crime',
   FANTASY = 'Fantasy',
   HISTORICAL = 'Historical',
   HORROR = 'Horror',
+  LGBTQ = 'LGBTQIA+',
   LITERARY = 'Literary',
   MAGICAL_REALISM = 'Magical Realism',
   MEMOIR = 'Memoir',
