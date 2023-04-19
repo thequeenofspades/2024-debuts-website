@@ -10,6 +10,7 @@ export interface Author {
   // Book details
   title: string;
   publisher: string;
+  synopsis?: string;
   season?: Season;
   releaseDate?: Date;
   ageCategory?: AgeCategory | AgeCategory[];

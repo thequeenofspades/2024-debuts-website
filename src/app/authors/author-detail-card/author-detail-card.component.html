@@ -23,9 +23,11 @@
     <mat-card-content>
       <p *ngIf="author.pronouns"><b>Pronouns</b>: {{ author.pronouns }}</p>
       <p *ngIf="author.rep"><b>Representation</b>: {{ author.rep }}</p>
-      <p>{{ author.bio }}</p>
+      <mat-divider></mat-divider>
+      <p [style.white-space]="'pre-wrap'">{{ author.bio }}</p>
+      <mat-divider></mat-divider>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="author.links">
       <div class="button-row">
         <a
           *ngFor="let link of author.links"
@@ -60,16 +62,22 @@
       </button>
     </div>
     <mat-card-content>
+      <p *ngIf="author.synopsis" [style.white-space]="'pre-wrap'">
+        {{ author.synopsis }}
+      </p>
+      <mat-divider></mat-divider>
       <p><b>Publisher</b>: {{ author.publisher }}</p>
       <p *ngIf="releaseDateAvailable()">
         <b>Release Date</b>: {{ formatReleaseDate() }}
       </p>
+      <mat-divider></mat-divider>
       <p *ngIf="author.ageCategory">
         <b>Age Category</b>: {{ getAgeCategories() }}
       </p>
       <p *ngIf="author.genre"><b>Genre</b>: {{ getGenres() }}</p>
+      <mat-divider></mat-divider>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="author.goodreadsUrl || author.preorderUrl">
       <div class="button-row">
         <a
           [href]="fixLink(author.goodreadsUrl)"

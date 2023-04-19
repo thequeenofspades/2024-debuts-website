@@ -40,6 +40,7 @@ export class ProfileFormComponent {
       // Book details
       title: fb.control('', [Validators.required]),
       publisher: fb.control('', [Validators.required]),
+      synopsis: '',
       ageCategory: fb.control(
         [],
         [Validators.minLength(1), Validators.required]
