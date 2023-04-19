@@ -7,12 +7,24 @@
   width: 100%;
 }
 
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .search-fields {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   justify-content: center;
+}
+
+.show-cover-toggle {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
 }
 
 .author-cards-container {

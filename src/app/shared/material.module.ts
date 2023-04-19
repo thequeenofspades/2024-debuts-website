@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
@@ -15,15 +16,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AltTextDialogComponent } from './alt-text-dialog/alt-text-dialog.component';
 
 @NgModule({
-  declarations: [
-    AltTextDialogComponent
-  ],
+  declarations: [AltTextDialogComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatLuxonDateModule,
@@ -38,6 +38,7 @@ import { AltTextDialogComponent } from './alt-text-dialog/alt-text-dialog.compon
     MatCardModule,
     MatDatepickerModule,
     MatDialogModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
     MatLuxonDateModule,
