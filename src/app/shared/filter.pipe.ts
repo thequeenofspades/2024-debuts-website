@@ -53,6 +53,11 @@ export class FilterPipe implements PipeTransform {
           return author.season === searchConfig.season;
         });
       }
+      if (searchConfig.hasPreorderLink) {
+        filteredAuthors = filteredAuthors.filter(
+          (author) => !!author.preorderUrl
+        );
+      }
     }
     return filteredAuthors;
   }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatLuxonDateModule } from '@angular/material-luxon-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -23,6 +24,7 @@ import { AltTextDialogComponent } from './alt-text-dialog/alt-text-dialog.compon
     CommonModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
@@ -39,6 +41,7 @@ import { AltTextDialogComponent } from './alt-text-dialog/alt-text-dialog.compon
   exports: [
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
